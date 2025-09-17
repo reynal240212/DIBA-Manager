@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Datos Profesional</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style/style.css">
+  
+</head>
+
+<body class="bg-light"> 
+  <!-- La barra de navegación se insertará aquí dinámicamente -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/public/index.html">
+            <span class="fw-bold">Gestor de Datos</span>
+        </a>
+        Cerrar sesión
+        <button class="btn btn-outline-light ms-auto" id="logoutBtn">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+        </button>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="header-text">
+      <h2>DEPORTIVO INTERNACIONAL DE BARRANQUILLA ATLANTICO</h2>
+      <h3>D.I.B.A FBC</h3>
+      <p>RESOLUCION 0122 11-09-2018</p>
+    </div>
+
+    <div class="logo-container">
+      <img src="https://via.placeholder.com/150x80?text=LOGO+AQUI" alt="Logo de la Institución" id="institutionLogo">
+    </div>
+
+    <div class="card shadow-lg rounded-4">
+      <div class="card-body p-4">
+        <h1 class="h3 mb-4 text-center text-primary fw-bold">Gestor de Datos</h1>
+
+        <div class="mb-4 d-flex gap-2 justify-content-center flex-wrap">
+          <label class="btn btn-outline-primary">
+            <i class="bi bi-upload"></i> Importar CSV <input type="file" id="importCSV" accept=".csv" hidden>
+          </label>
+          <button class="btn btn-success" id="exportExcel">
+            <i class="bi bi-file-earmark-spreadsheet-fill"></i> Exportar a Excel
+          </button>
+          <button class="btn btn-danger" id="exportPDF">
+            <i class="bi bi-file-earmark-pdf-fill"></i> Exportar a PDF
+          </button>
+          <button class="btn btn-info text-white" id="addRecord">
+            <i class="bi bi-plus-circle-fill"></i> Añadir Registro
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle text-center mb-0" id="dataTable">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Talla</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+    <script type="module" src="scripts/app.js"></script>
+
+    <script type="module">
+      import { protectRoute } from './utils/auth.js';
+      import { createNavbar } from './components/navbar.js';
+    
+      document.addEventListener("DOMContentLoaded", async () => {
+        await protectRoute();
+        // Reemplazamos la navbar estática por la dinámica
+        document.querySelector('.navbar').remove(); 
+        createNavbar('Gestor de Datos');
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- El script de gesto.js ya importa Supabase, por lo que no es necesario cargarlo aquí de nuevo -->
+    <script type="module" src="/public/scripts/gesto.js"></script>
+
+</body>
+</html>
