@@ -51,7 +51,7 @@
   <!-- La barra de navegación se insertará aquí dinámicamente -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="/public/index.html">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
             <span class="fw-bold">Gestor de Datos</span>
         </a>
         Cerrar sesión
@@ -96,8 +96,8 @@
   </main>
   
   <script type="module">
-    import { protectRoute } from './utils/auth.js';
-    import { createNavbar } from './components/navbar.js';
+    import { protectRoute } from 'utils/auth.js';
+    import { createNavbar } from 'components/navbar.js';
   
     document.addEventListener("DOMContentLoaded", async () => {
       await protectRoute(); // 1. Proteger la ruta
